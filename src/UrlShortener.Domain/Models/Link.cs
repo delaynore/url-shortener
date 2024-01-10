@@ -1,8 +1,8 @@
-﻿using UrlShortener.Domain.Interfaces.Repositories;
+﻿using UrlShortener.Domain.Common;
 
-namespace UrlShortener.Domain.Entities;
+namespace UrlShortener.Domain.Models;
 
-public class Link
+public class Link : IEntity<int>
 {
     public int Id { get; private set; }
     public Url OriginalUrl { get; private set; }
