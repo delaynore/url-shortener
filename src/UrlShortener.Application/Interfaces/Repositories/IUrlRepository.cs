@@ -21,5 +21,5 @@ public interface IUrlRepository
     /// <param name="shortUrl">Short url.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Decoded url if found otherwise null.</returns>
-    Task<Token?> GetByShortUrl(Token shortUrl, CancellationToken cancellationToken);
+    Task<Url?> GetByShortUrl(Token shortUrl, CancellationToken cancellationToken);
 }

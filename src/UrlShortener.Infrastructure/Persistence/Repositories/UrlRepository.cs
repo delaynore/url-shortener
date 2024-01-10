@@ -11,12 +11,13 @@ public class UrlRepository(AppDbContext dbContext) : IUrlRepository
         return Task.Run(async () =>
         {
             await dbContext.Links.AddAsync(link, cancellationToken);
+            await dbContext.SaveChangesAsync(cancellationToken);
             return link.ShortUrl;
         }, cancellationToken);
     }
     
-    public async Task<Token?> GetByShortUrl(Token shortUrl, CancellationToken cancellationToken)
+    public async Task<Url?> GetByShortUrl(Token shortUrl, CancellationToken cancellationToken)
     { 
-        return (await dbContext.Links.SingleOrDefaultAsync(l => l.ShortUrl == shortUrl, cancellationToken))?.ShortUrl;
+        return (await dbContext.Links.SingleOrDefaultAsync(l => l.ShortUrl == shortUrl, cancellationToken))?.OriginalUrl;
     }
 }
