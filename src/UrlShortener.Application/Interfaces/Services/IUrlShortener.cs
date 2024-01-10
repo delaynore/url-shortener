@@ -4,5 +4,5 @@ namespace UrlShortener.Application.Interfaces.Services;
 
 public interface IUrlShortener
 {
-    Task<Url> Short(Url originalUrl);
+    Task<Token> Short(Url originalUrl);
 }

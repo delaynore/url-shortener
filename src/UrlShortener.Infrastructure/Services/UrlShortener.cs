@@ -10,14 +10,14 @@ public class UrlShortener : IUrlShortener
     private const string AllowedCharacters = "1234567890" +
                                              "qwertyuiopasdfghjklzxcvbnm" +
                                              "QWERTYUIOPASDFGHJKLZXCVBNM";
-    private Url GetShortenUrl(Url _)
+    private Token GetShortenUrl(Url _)
     {
         var random = Random.Shared;
-        return Url.Create(new string(random.GetItems<char>(AllowedCharacters, ShortUrlLength)));
+        return Token.Create(new string(random.GetItems<char>(AllowedCharacters, ShortUrlLength)));
     }
 
-    public Task<Url> Short(Url originalUrl)
+    public Task<Token> Short(Url originalUrl)
     {
-        return new Task<Url>(() => GetShortenUrl(originalUrl));
+        return new Task<Token>(() => GetShortenUrl(originalUrl));
     }
 }

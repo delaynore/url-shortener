@@ -18,7 +18,7 @@ public class UrlService(IUrlRepository repository, IUrlShortener urlShortener) :
 
     public async Task<UrlDto> ExpandUrl(UrlDto shortUrl, CancellationToken cancellationToken = default)
     {
-        var url = Url.Create(shortUrl.Url);
+        var url = Token.Create(shortUrl.Url);
         var expandedUrl = await repository.GetByShortUrl(url, cancellationToken);
         
         if (expandedUrl is null) throw new Exception(shortUrl + " is not found");

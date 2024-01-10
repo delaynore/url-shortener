@@ -14,7 +14,7 @@ public class LinkConfiguration : IEntityTypeConfiguration<Link>
         
         builder.Property(l => l.ShortUrl)
             .HasConversion(x => x.Value,
-                str => Url.Create(str))
+                str => Token.Create(str))
             .HasMaxLength(MaxLengthShortUrl)
             .IsRequired();
         
