@@ -18,6 +18,6 @@ public class UrlShortener : IUrlShortener
 
     public Task<Token> Short(Url originalUrl)
     {
-        return new Task<Token>(() => GetShortenUrl(originalUrl));
+        return Task.Run(() => GetShortenUrl(originalUrl));
     }
 }
