@@ -5,7 +5,6 @@ using UrlShortener.Application.Interfaces.Services;
 namespace UrlShortener.Api.Controllers;
 
 [Route("")]
-[ApiController]
 public class UrlController(IUrlService urlService) : ControllerBase
 {
     private readonly IUrlService _urlService = urlService;
