@@ -1,3 +1,4 @@
+using UrlShortener.Api.Middleware;
 using UrlShortener.Application.DependencyInjection;
 using UrlShortener.Infrastructure.DependencyInjection;
 
@@ -22,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHsts();
 app.UseHttpsRedirection();
 
