@@ -1,6 +1,7 @@
 ﻿using UrlShortener.Application.Dto;
 using UrlShortener.Application.Interfaces.Repositories;
 using UrlShortener.Application.Interfaces.Services;
+using UrlShortener.Domain.Exceptions;
 using UrlShortener.Domain.Models;
 
 namespace UrlShortener.Application.Services;
@@ -21,7 +22,7 @@ public class UrlService(IUrlRepository repository, IUrlShortener urlShortener) :
         var url = Token.Create(shortUrl.Url);
         var expandedUrl = await repository.GetByShortUrl(url, cancellationToken);
         
-        if (expandedUrl is null) throw new Exception(shortUrl + " is not found");
+        if (expandedUrl is null) throw new UrlNotFoundException(url);
         return new UrlDto(expandedUrl.Value);
     }
 }
