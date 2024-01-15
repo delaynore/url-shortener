@@ -1,5 +1,5 @@
 ﻿using UrlShortener.Domain.Exceptions.Base;
-using UrlShortener.Domain.Exceptions.Url;
+using UrlShortener.Domain.Exceptions.OriginalUrl;
 
 namespace UrlShortener.Api.Middleware
 {

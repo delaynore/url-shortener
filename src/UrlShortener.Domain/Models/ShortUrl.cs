@@ -1,11 +1,11 @@
 ﻿using UrlShortener.Domain.Common;
-using UrlShortener.Domain.Exceptions.Token;
+using UrlShortener.Domain.Exceptions.ShortUrl;
 
 namespace UrlShortener.Domain.Models;
 
 public class ShortUrl : ValueObject
 {
-    private const int MaxLength = 20;
+    public const int MaxLength = 20;
     private ShortUrl(string value) => Value = value;
     public string Value { get; }
 

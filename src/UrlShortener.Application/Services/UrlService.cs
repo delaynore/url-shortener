@@ -1,7 +1,7 @@
 ﻿using UrlShortener.Application.Dto;
 using UrlShortener.Application.Interfaces.Repositories;
 using UrlShortener.Application.Interfaces.Services;
-using UrlShortener.Domain.Exceptions.Url;
+using UrlShortener.Domain.Exceptions.OriginalUrl;
 using UrlShortener.Domain.Models;
 
 namespace UrlShortener.Application.Services;

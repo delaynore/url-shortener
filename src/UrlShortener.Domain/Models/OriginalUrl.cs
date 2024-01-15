@@ -1,12 +1,12 @@
 ﻿using System.Text.RegularExpressions;
 using UrlShortener.Domain.Common;
-using UrlShortener.Domain.Exceptions.Url;
+using UrlShortener.Domain.Exceptions.OriginalUrl;
 
 namespace UrlShortener.Domain.Models;
 
 public class OriginalUrl : ValueObject
 {
-    private const int MaxLength = 200;
+    public const int MaxLength = 200;
     public string Value { get; }
     
     private OriginalUrl(string value)
