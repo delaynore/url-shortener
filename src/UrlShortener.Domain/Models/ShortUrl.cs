@@ -3,24 +3,24 @@ using UrlShortener.Domain.Exceptions.Token;
 
 namespace UrlShortener.Domain.Models;
 
-public class Token : ValueObject
+public class ShortUrl : ValueObject
 {
     private const int MaxLength = 20;
-    private Token(string value) => Value = value;
+    private ShortUrl(string value) => Value = value;
     public string Value { get; }
 
-    public static Token Create(string token)
+    public static ShortUrl Create(string token)
     {
         if (string.IsNullOrWhiteSpace(token))
         {
-            throw new EmptyTokenException();
+            throw new EmptyShortUrlException();
         }
         if (token.Length > MaxLength)
         {
-            throw new InvalidTokenLengthException(token.Length);
+            throw new InvalidShortUrlLengthException(token.Length);
         }
 
-        return new Token(token);
+        return new ShortUrl(token);
     }
     protected override IEnumerable<object> GetEqualityComponents()
     {

@@ -6,7 +6,7 @@ namespace UrlShortener.Infrastructure.Persistence.Repositories;
 
 public class UrlRepository(AppDbContext dbContext) : IUrlRepository
 {
-    public Task<Token> Create(Link link, CancellationToken cancellationToken)
+    public Task<ShortUrl> Create(Link link, CancellationToken cancellationToken)
     {
         return Task.Run(async () =>
         {
@@ -16,7 +16,7 @@ public class UrlRepository(AppDbContext dbContext) : IUrlRepository
         }, cancellationToken);
     }
     
-    public async Task<Url?> GetByShortUrl(Token shortUrl, CancellationToken cancellationToken)
+    public async Task<OriginalUrl?> GetByShortUrl(ShortUrl shortUrl, CancellationToken cancellationToken)
     { 
         return (await dbContext.Links.SingleOrDefaultAsync(l => l.ShortUrl == shortUrl, cancellationToken))?.OriginalUrl;
     }

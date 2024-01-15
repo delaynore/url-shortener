@@ -28,7 +28,7 @@ namespace UrlShortener.Api.Middleware
         {
             return exception switch
             {
-                UrlNotFoundException => StatusCodes.Status404NotFound,
+                OriginalUrlNotFoundException => StatusCodes.Status404NotFound,
                 BaseException => StatusCodes.Status400BadRequest,
                 _ => StatusCodes.Status500InternalServerError
             };

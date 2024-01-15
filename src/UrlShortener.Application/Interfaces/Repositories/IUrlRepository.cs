@@ -13,7 +13,7 @@ public interface IUrlRepository
     /// <param name="link">Link.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    Task<Token> Create(Link link, CancellationToken cancellationToken);
+    Task<ShortUrl> Create(Link link, CancellationToken cancellationToken);
     
     /// <summary>
     /// Get the original url by short url.
@@ -21,5 +21,5 @@ public interface IUrlRepository
     /// <param name="shortUrl">Short url.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Decoded url if found otherwise null.</returns>
-    Task<Url?> GetByShortUrl(Token shortUrl, CancellationToken cancellationToken);
+    Task<OriginalUrl?> GetByShortUrl(ShortUrl shortUrl, CancellationToken cancellationToken);
 }
