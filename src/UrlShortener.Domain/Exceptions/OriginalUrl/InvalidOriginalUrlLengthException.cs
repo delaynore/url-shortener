@@ -1,7 +1,6 @@
 ﻿using UrlShortener.Domain.Exceptions.Base;
-using UrlShortener.Domain.Models;
 
-namespace UrlShortener.Domain.Exceptions.Url
+namespace UrlShortener.Domain.Exceptions.OriginalUrl
 {
-    public sealed class InvalidOriginalUrlLengthException(int actual) : InvalidLengthException(nameof(OriginalUrl), 200, actual);
+    public sealed class InvalidOriginalUrlLengthException(int actual) : InvalidLengthException(nameof(OriginalUrl), Models.OriginalUrl.MaxLength, actual);
 }
