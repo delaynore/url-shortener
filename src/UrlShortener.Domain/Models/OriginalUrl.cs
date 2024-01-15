@@ -4,32 +4,32 @@ using UrlShortener.Domain.Exceptions.Url;
 
 namespace UrlShortener.Domain.Models;
 
-public class Url : ValueObject
+public class OriginalUrl : ValueObject
 {
     private const int MaxLength = 200;
     public string Value { get; }
     
-    private Url(string value)
+    private OriginalUrl(string value)
     {
         Value = value;
     }
 
-    public static Url Create(string url)
+    public static OriginalUrl Create(string url)
     {
         if (string.IsNullOrWhiteSpace(url))
         {
-            throw new EmptyUrlException();
+            throw new EmptyOriginalUrlException();
         }
         if (url.Length > MaxLength)
         {
-            throw new InvalidUrlLengthException(url.Length);
+            throw new InvalidOriginalUrlLengthException(url.Length);
         }
         if (!IsValidUrl(url))
         {
-            throw new InvalidUrlException(url);
+            throw new InvalidOriginalUrlException(url);
         }
 
-        return new Url(url);
+        return new OriginalUrl(url);
     }
 
     private const string UrlPattern =

@@ -14,13 +14,13 @@ public class LinkConfiguration : IEntityTypeConfiguration<Link>
         
         builder.Property(l => l.ShortUrl)
             .HasConversion(x => x.Value,
-                str => Token.Create(str))
+                str => ShortUrl.Create(str))
             .HasMaxLength(MaxLengthShortUrl)
             .IsRequired();
         
         builder.Property(l => l.OriginalUrl)
             .HasConversion(x => x.Value,
-                str => Url.Create(str))
+                str => OriginalUrl.Create(str))
             .HasMaxLength(MaxLengthOriginalUrl)
             .IsRequired();;
         

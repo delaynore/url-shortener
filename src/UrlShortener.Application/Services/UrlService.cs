@@ -10,7 +10,7 @@ public class UrlService(IUrlRepository repository, IUrlShortener urlShortener) :
 {
     public async Task<UrlDto> ShortenUrl(UrlDto originalUrl, CancellationToken cancellationToken = default)
     {
-        var original = Url.Create(originalUrl.Url);
+        var original = OriginalUrl.Create(originalUrl.Url);
         var shorted = await urlShortener.Short(original);
         
         var link = Link.Create(0, original, shorted); //some questions about id = 0
@@ -19,10 +19,10 @@ public class UrlService(IUrlRepository repository, IUrlShortener urlShortener) :
 
     public async Task<UrlDto> ExpandUrl(UrlDto shortUrl, CancellationToken cancellationToken = default)
     {
-        var url = Token.Create(shortUrl.Url);
+        var url = ShortUrl.Create(shortUrl.Url);
         var expandedUrl = await repository.GetByShortUrl(url, cancellationToken);
         
-        if (expandedUrl is null) throw new UrlNotFoundException(url.Value);
+        if (expandedUrl is null) throw new OriginalUrlNotFoundException(url.Value);
         return new UrlDto(expandedUrl.Value);
     }
 }
